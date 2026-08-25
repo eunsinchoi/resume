@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>최은신 | AI Engineer 이력서</title>
+  <style>
+    :root {
+      --ink: #33383d;
+      --muted: #757b80;
+      --line: #8c8f92;
+      --soft-line: #d7dadd;
+      --paper: #ffffff;
+      --page-bg: #f4f5f6;
+      --accent: #263746;
+      --image-bg: #f1f3f5;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--page-bg);
+      color: var(--ink);
+      font-family:
+        Pretendard,
+        "Noto Sans KR",
+        "Apple SD Gothic Neo",
+        "Malgun Gothic",
+        Arial,
+        sans-serif;
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+
+    .resume {
+      width: min(1080px, calc(100% - 40px));
+      margin: 44px auto;
+      padding: 72px 82px 88px;
+      background: var(--paper);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.06);
+    }
+
+    /* 상단 */
+    .resume-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto 118px;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 38px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .identity h1 {
+      margin: 0 0 8px;
+      font-size: 42px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+    }
+
+    .identity .role {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .contact {
+      display: grid;
+      gap: 5px;
+      justify-items: end;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .contact a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .personal-info {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 32px;
+      margin-top: 2px;
+      padding-top: 20px;
+      border-top: 1px solid var(--soft-line);
+      color: #666c71;
+      font-size: 14px;
+    }
+
+    .personal-info div {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    .personal-info dt {
+      margin: 0;
+      color: #94999d;
+      font-weight: 600;
+    }
+
+    .personal-info dd {
+      margin: 0;
+      color: #5f656a;
+    }
+
+    .personal-info a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 프로필 사진 */
+    .profile-photo-wrap {
+      position: relative;
+      width: 118px;
+      height: 148px;
+      overflow: hidden;
+      border: 1px solid var(--soft-line);
+      border-radius: 4px;
+      background: var(--image-bg);
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .image-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 14px;
+      color: #959ba0;
+      background: var(--image-bg);
+      font-size: 12px;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .summary {
+      margin: 34px 0 6px;
+      max-width: 820px;
+      font-size: 16px;
+      color: #555b60;
+    }
+
+    /* 섹션 */
+    /* 12열 기준: 섹션명 1~2열 / 날짜 3~4열 / 내용 5~12열 */
+    .section {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 20px;
+      padding: 30px 0 34px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .section:last-child { border-bottom: 0; }
+
+    .section-title {
+      grid-column: 1 / span 2;
+      margin: 0;
+      color: #74787b;
+      font-size: 25px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+    }
+
+    .items {
+      grid-column: 3 / -1;
+      display: grid;
+      gap: 28px;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+      column-gap: 20px;
+      align-items: start;
+    }
+
+    .period {
+      grid-column: 1 / span 2;
+      color: #80858a;
+      font-size: 16px;
+      white-space: nowrap;
+      padding-top: 1px;
+    }
+
+    .content {
+      grid-column: 3 / -1;
+      min-width: 0;
+    }
+
+    .content h3 {
+      margin: 0 0 5px;
+      color: #5b6064;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .content p {
+      margin: 0;
+      color: #70757a;
+      font-size: 16px;
+    }
+
+    .content ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+      color: #70757a;
+      font-size: 15px;
+    }
+
+    .content li + li { margin-top: 5px; }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 10px;
+      border: 1px solid var(--soft-line);
+      border-radius: 999px;
+      color: #656b70;
+      background: #fafafa;
+      font-size: 13px;
+    }
+
+    .hint {
+      color: #a2a6aa !important;
+      font-style: italic;
+    }
+
+    /* 경력사항 / 프로젝트는 조금 더 압축된 타이포그래피 */
+    .compact-section .section-title {
+      font-size: 21px;
+    }
+
+    .compact-section .period {
+      font-size: 14px;
+    }
+
+    .compact-section .content h3 {
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .compact-section .content p,
+    .compact-section .content ul {
+      font-size: 14px;
+    }
+
+    .compact-section .content ul {
+      margin-top: 5px;
+    }
+
+    @media (max-width: 820px) {
+      .resume {
+        width: 100%;
+        margin: 0;
+        padding: 42px 24px 60px;
+        box-shadow: none;
+      }
+
+      .resume-header {
+        grid-template-columns: 1fr 96px;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .contact {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-items: start;
+      }
+
+      .profile-photo-wrap {
+        width: 96px;
+        height: 120px;
+      }
+
+      .personal-info {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+      }
+
+      .section-title,
+      .items {
+        grid-column: 1;
+      }
+
+      .item {
+        grid-template-columns: 1fr;
+        row-gap: 5px;
+      }
+
+      .period,
+      .content {
+        grid-column: 1;
+      }
+
+      .period { white-space: normal; }
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm 13mm;
+    }
+
+    @media print {
+      body { 
+        margin: 0;
+        background: #fff; }
+
+      .resume {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        max-width: none;
+      }
+
+      .section,
+      .item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      a {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+
+      .image-fallback {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="resume">
+    <header class="resume-header">
+      <div class="identity">
+        <h1>최은신</h1>
+        <p class="role">AI Engineer</p>
+      </div>
+
+      <div class="contact" aria-label="연락처">
+        <span>010-9061-4177</span>
+        <a href="mailto:eunsin_choi@naver.com">eunsin_choi@naver.com</a>
+      </div>
+
+      <!-- images/profile.jpg 파일을 같은 폴더의 images 디렉터리에 넣으면 표시됩니다. -->
+      <div class="profile-photo-wrap">
+        <img
+          class="profile-photo"
+          src="images/profile.jpg"
+          alt="최은신 프로필 사진"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        />
+        <div class="image-fallback">images/profile.jpg<br>프로필 사진</div>
+      </div>
+
+      <dl class="personal-info">
+        <div><dt>이름</dt><dd>최은신</dd></div>
+        <div><dt>지원직무</dt><dd>AI Engineer</dd></div>
+        <div><dt>생년월일</dt><dd>1998년 09월 17일 (만 27세)</dd></div>
+        <div><dt>이메일</dt><dd><a href="mailto:eunsin_choi@naver.com">eunsin_choi@naver.com</a></dd></div>
+        <div><dt>휴대폰</dt><dd>010-9061-4177</dd></div>
+        <div><dt>병역사항</dt><dd>해당 없음</dd></div>
+        <div style="grid-column: 1 / -1;"><dt>주소</dt><dd>서울특별시 관악구 쑥고개로 19, 401호</dd></div>
+      </dl>
+    </header>
+
+    <p class="summary">
+      멀티모달 딥러닝 연구와 공공데이터 정제 업무 경험을 보유한 AI Engineer 지원자입니다.
+      중앙대학교 AI STAT Lab에서 이종 데이터 통합 분석을 위한 멀티모달 딥러닝 연구에 참여했으며,
+      머신러닝·딥러닝·자연어 처리 기반의 문제 해결 역량을 쌓았습니다.
+    </p>
+
+    <section class="section compact-section">
+      <h2 class="section-title">경력사항</h2>
+      <div class="items">
+        <article class="item">
+          <div class="period">2021.09 ~ 2021.12</div>
+          <div class="content">
+            <h3>행정안전부 · 한국지능정보사회진흥원 청년인턴</h3>
+            <ul>
+              <li>공공데이터 정제 업무 수행</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section compact-section">
+      <h2 class="section-title">프로젝트</h2>
+      <div class="items">
+        <article class="item">
+          <div class="period">2024.05 ~ 2026.02</div>
+          <div class="content">
+            <h3>과학기술정보통신부 · 이종 데이터의 통합 분석을 위한 멀티모달 딥러닝 모델에 관한 연구</h3>
+            <p>음성-텍스트 멀티모달 연구 수행. <br>
+              졸업 논문 Cross-Dataset Robust Audio-Based Depression Detection via Audio Mamba Embeddings and Symptom-Guided LLM Representations </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">교육사항</h2>
+      <div class="items">
+        <article class="item">
+          <div class="period">2024.03 ~ 2026.08</div>
+          <div class="content">
+            <h3>중앙대학교 · 통계데이터사이언스학과 · 석사 졸업 예정</h3>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="period">2018.03 ~ 2023.02</div>
+          <div class="content">
+            <h3>성신여자대학교 · 국어국문학과 / 통계학과 · 학사 졸업</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">자격증 및 어학</h2>
+      <div class="items">
+        <article class="item">
+          <div class="period">2026.06</div>
+          <div class="content">
+            <h3>TOEIC Speaking</h3>
+            <p>Advanced Low (Speaking Score 170)</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="period">2025.12</div>
+          <div class="content">
+            <h3>SQL 개발자 · 한국데이터산업진흥원</h3>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="period">2025.06</div>
+          <div class="content">
+            <h3>데이터 분석 준전문가 · 한국데이터산업진흥원</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">수상내역 및 기타</h2>
+      <div class="items">
+        <article class="item">
+          <div class="period">2025.06</div>
+          <div class="content">
+            <h3>DCASE2025 Task 6 · 1위</h3>
+            <p>IEEE AASP</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="period">2021.12</div>
+          <div class="content">
+            <h3>2021 공공데이터 청년인턴 해커톤 대회 · 아이디어 분야 장려상</h3>
+            <p>한국지능정보사회진흥원</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">스킬</h2>
+      <div class="items">
+        <article class="item">
+          <div class="period">AI / Data</div>
+          <div class="content">
+            <div class="tag-list">
+              <span class="tag">딥러닝 모델링 · 중급</span>
+              <span class="tag">자연어 처리 · 중급</span>
+              <span class="tag">머신러닝 구현 · 중급</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="period">업무 역량</div>
+          <div class="content">
+            <div class="tag-list">
+              <span class="tag">마이크로소프트 오피스 · 고급</span>
+              <span class="tag">갈등 관리 · 고급</span>
+              <span class="tag">책임감 · 고급</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">주요 연구 경험</h2>
+
+      <div class="items">
+        <article class="item">
+          <div class="period"></div>
+
+          <div class="content">
+            <h3>최신 AI 기술 탐색 및 연구 적용</h3>
+            <p>
+              석사 과정 동안 빠르게 변화하는 AI 기술을 지속적으로 학습하고 실제 연구에 적용했습니다.
+              연구실에서는 음성과 비디오를 중심으로 서로 다른 연구가 진행되었으며, 매주 공동 세미나를 통해
+              각 분야의 최신 연구와 기술을 공유했습니다. 이 과정에서 비디오 데이터 처리에 Mamba 계열 모델을
+              활용하는 연구를 접했고, 이후 Audio Mamba가 등장하자 관련 논문과 구조를 빠르게 학습하여
+              졸업 논문의 오디오 전처리 기법으로 적용했습니다. 연구 초기의 BERT 기반 모델부터 최신 오디오
+              인코더와 Mamba 계열 모델까지 다양한 기술의 변화를 경험하며, 새로운 기술을 단순히 학습하는 데
+              그치지 않고 현재 연구 문제에 어떻게 활용할 수 있을지 판단하고 직접 적용하는 역량을 길렀습니다.
+            </p>
+          </div>
+        </article>
+
+        <article class="item">
+          <div class="period"></div>
+
+          <div class="content">
+            <h3>Cross-Dataset 기반 음성 우울증 탐지 연구</h3>
+            <p>
+              석사 과정의 주요 연구 주제는 음성 기반 우울증 탐지였습니다. 기존 연구는 하나의 데이터셋을
+              학습·검증·테스트 세트로 나누어 높은 성능을 달성하는 방식이 일반적이었지만, 다른 데이터셋에
+              적용하면 성능이 크게 저하되는 문제가 있었습니다. 실제 임상 환경에서 활용 가능한 모델을 만들기
+              위해서는 특정 데이터셋에서의 높은 성능보다 새로운 환경에서도 안정적으로 작동하는 일반화 성능이
+              중요하다고 판단했고, 단일 데이터셋의 SOTA 달성보다 Cross-Dataset Generalization과 강건성
+              향상에 초점을 맞춰 연구를 진행했습니다. 이를 위해 최신 오디오 인코더를 활용해 음성 특징 표현을
+              개선하고, 오픈소스 LLM인 LLaMA를 활용하여 발화 스크립트를 분석한 뒤 우울증 평가 항목별 점수를
+              생성하는 방법을 적용했습니다. 이를 통해 단순한 우울증 여부 예측을 넘어 모델의 판단 근거를
+              구체적으로 제시할 수 있도록 해석가능성을 강화했습니다. 실제 임상 서비스에 즉시 적용할 수준의
+              절대적인 성능에는 도달하지 못했지만, 데이터셋이 변경될 때 성능이 크게 저하되던 기존 접근보다
+              다양한 데이터 환경에서 보다 강건한 모델을 설계했다는 점에 연구의 의미가 있다고 생각합니다.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section> 
+  </main>
+</body>
+</html>
